@@ -1,3 +1,7 @@
 __cdistmarker
 
+### PACKAGES ################################################################
 
+# google play music is not in the repositories :-/
+__package fping
+__package cabal-install
