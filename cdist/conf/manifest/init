@@ -1,7 +1,20 @@
 __cdistmarker
 
+### VARIABLES ###############################################################
+
+USERNAME=kamila
+GENERATED_SHELL_CONFIG=/home/$USERNAME/.config/fish/cdist-generated.fish
+REPOS_PATH=/home/$USERNAME/bin/repos
+
 ### PACKAGES ################################################################
 
 # google play music is not in the repositories :-/
 __package fping
 __package cabal-install
+
+### SOFTWARE NOT IN PACKAGES ################################################
+
+__git $REPOS_PATH/stderred --source git://github.com/sickill/stderred.git --owner kamila
+# TODO run make... somehow :D
+__line stderred_ld_preload --line "export LD_PRELOAD=\"$REPOS_PATH/stderred/build/libstderred.so:\$LD_PRELOAD\"" --file $GENERATED_SHELL_CONFIG
+__line stderred_set_color  --line "export STDERRED_ESC_CODE=(set_color yellow)"                                  --file $GENERATED_SHELL_CONFIG
