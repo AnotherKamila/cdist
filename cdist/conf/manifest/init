@@ -14,7 +14,7 @@ __package cabal-install
 
 ### SOFTWARE NOT IN PACKAGES ################################################
 
-__git $REPOS_PATH/stderred --source git://github.com/sickill/stderred.git --owner kamila
+__git $REPOS_PATH/stderred --source git://github.com/sickill/stderred.git --owner $USERNAME
 # TODO run make... somehow :D
 __line stderred_ld_preload --line "export LD_PRELOAD=\"$REPOS_PATH/stderred/build/libstderred.so:\$LD_PRELOAD\"" --file $GENERATED_SHELL_CONFIG
 __line stderred_set_color  --line "export STDERRED_ESC_CODE=(set_color yellow)"                                  --file $GENERATED_SHELL_CONFIG
