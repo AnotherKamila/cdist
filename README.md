@@ -7,7 +7,7 @@ Good to know
 ------------
 
 - `cdist` can be used to *partially* manage a host -- so for instance I can manage e.g. only the firewall and nginx on a physical machine, and also fully manage "disposable" or "simple" hosts.
-- `cdist` is idempotent and aware of dependencies, so it do the Right Thing (TM) when you run it against a live host. This makes it suitable for managing long-lived, non-disposable, always-online hosts, such as my laptop.
+- `cdist` is idempotent and aware of dependencies, so it will do the Right Thing (TM) when you run it against a live host. This makes it suitable for managing long-lived, non-disposable, always-online hosts, such as my laptop or a non-disposable server.
 - as is usual with `cdist`, I use a separate branch for every "configuration domain" (usually every host, unless I manage several hosts with the same config).
 
 "Domains"/branches:
