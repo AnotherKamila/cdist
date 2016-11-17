@@ -1,20 +1,34 @@
+# TODO split into root's and user's problem and run the user's part as user
+
 __cdistmarker
 
 ### VARIABLES ###############################################################
 
 USERNAME=kamila
-GENERATED_SHELL_CONFIG=/home/$USERNAME/.config/fish/cdist-generated.fish
+SHELL_CONFIG=/home/$USERNAME/.config/fish/cdist-generated.fish
 REPOS_PATH=/home/$USERNAME/bin/repos
 
 ### PACKAGES ################################################################
 
-# google play music is not in the repositories :-/
+# Not in the repositories (:-/), but provide .deb:
+# - google play music desktop player
+# - fzy (https://github.com/jhawthorn/fzy)
+
 __package fping
 __package cabal-install
 
+__package thefuck
+require="__package/thefuck" \
+__line thefuck_alias --line 'eval (thefuck --alias f | tr "\n" ";")' --file $SHELL_CONFIG
+
 ### SOFTWARE NOT IN PACKAGES ################################################
+
+# TODO look at multirepo
 
 __git $REPOS_PATH/stderred --source git://github.com/sickill/stderred.git --owner $USERNAME
 # TODO run make... somehow :D
-__line stderred_ld_preload --line "export LD_PRELOAD=\"$REPOS_PATH/stderred/build/libstderred.so:\$LD_PRELOAD\"" --file $GENERATED_SHELL_CONFIG
-__line stderred_set_color  --line "export STDERRED_ESC_CODE=(set_color yellow)"                                  --file $GENERATED_SHELL_CONFIG
+__line stderred_ld_preload --line "export LD_PRELOAD=\"$REPOS_PATH/stderred/build/libstderred.so:\$LD_PRELOAD\"" --file $SHELL_CONFIG
+__line stderred_set_color  --line "export STDERRED_ESC_CODE=(set_color yellow)"                                  --file $SHELL_CONFIG
+
+__git $REPOS_PATH/fzf --source git://github.com/junegunn/fzf.git --owner $USERNAME
+# TODO run fzf/install.sh
