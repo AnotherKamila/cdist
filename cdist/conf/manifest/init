@@ -14,6 +14,10 @@ REPOS_PATH=/home/$USERNAME/bin/repos
 # - google play music desktop player
 # - fzy (https://github.com/jhawthorn/fzy)
 
+__package fish
+__package mosh
+__package tmux
+
 __package fping
 __package cabal-install
 
